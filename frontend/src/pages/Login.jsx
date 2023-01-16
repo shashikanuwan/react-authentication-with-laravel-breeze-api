@@ -5,6 +5,7 @@ import axios from "../api/axios";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errors, setErrors] = useState("");
     const navigate = useNavigate();
 
     const handleLogin = async (event) => {
@@ -15,7 +16,9 @@ const Login = () => {
             setPassword("");
             navigate("/");
         } catch (e) {
-            console.log(e);
+            if (e.response.status === 422) {
+                setErrors(e.response.data.errors);
+            }
         }
     }
 
@@ -32,11 +35,13 @@ const Login = () => {
                         <input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)}
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
 
-                        <div className="flex">
-                            <span className="text-red-400 text-sm m-2 p-2">
-                                error
-                            </span>
-                        </div>
+                        {errors.email && (
+                            <div className="flex">
+                                <span className="text-red-400 text-sm m-2 p-2">
+                                    {errors.email[0]}
+                                </span>
+                            </div>
+                        )}
                     </div>
 
                     <div>
@@ -44,13 +49,14 @@ const Login = () => {
                         <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}
                             className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring" />
 
-                        <div v-if="authStore.errors.password" className="flex">
-                            <span className="text-red-400 text-sm m-2 p-2">
-                                error
-                            </span>
-                        </div>
+                        {errors.password && (
+                            <div className="flex">
+                                <span className="text-red-400 text-sm m-2 p-2">
+                                    {errors.password[0]}
+                                </span>
+                            </div>
+                        )}
                     </div>
-
                 </div>
 
                 <div className="flex mt-6">
