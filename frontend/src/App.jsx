@@ -1,9 +1,13 @@
+import Nav from "./components/Nav";
+
 function App() {
 
   return (
-    <div className="max-w-6xl mx-auto">
-      <h1>React</h1>
+
+    <div>
+      <Nav />
     </div>
+
   )
 }
 
