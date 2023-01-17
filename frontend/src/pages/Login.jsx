@@ -1,26 +1,16 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "../api/axios";
+import { Link } from "react-router-dom";
+import useAuthContext from "../context/AuthContext";
 
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [errors, setErrors] = useState("");
-    const navigate = useNavigate();
+    const { login, errors } = useAuthContext();
 
     const handleLogin = async (event) => {
         event.preventDefault();
-        try {
-            await axios.post('http://localhost:8000/login', { email, password });
-            setEmail("");
-            setPassword("");
-            navigate("/");
-        } catch (e) {
-            if (e.response.status === 422) {
-                setErrors(e.response.data.errors);
-            }
-        }
-    }
+        login({ email, password });
+    };
 
     return (
         <section className="max-w-4xl mt-14 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">

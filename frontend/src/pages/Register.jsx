@@ -1,30 +1,18 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "../api/axios";
+import { Link } from "react-router-dom";
+import useAuthContext from "../context/AuthContext";
 
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [password_confirmation, setPasswordConfirmation] = useState("");
-    const [errors, setErrors] = useState("");
-    const navigate = useNavigate();
+    const { register, errors } = useAuthContext();
 
     const handleRegister = async (event) => {
         event.preventDefault();
-        try {
-            await axios.post('http://localhost:8000/register', { name, email, password, password_confirmation });
-            setName("");
-            setEmail("");
-            setPassword("");
-            setPasswordConfirmation("");
-            navigate("/dashboard");
-        } catch (e) {
-            if (e.response.status === 422) {
-                setErrors(e.response.data.errors);
-            }
-        }
-    }
+        register({ name, email, password, password_confirmation });
+    };
 
     return (
         <section class="max-w-4xl p-6 mt-14 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
