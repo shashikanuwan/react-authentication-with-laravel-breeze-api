@@ -10,7 +10,7 @@ const ResetPassword = () => {
     const [password, setPassword] = useState("");
     const [password_confirmation, setPasswordConfirmation] = useState("");
     const [searchParams] = useSearchParams();
-    const [token] = useParams();
+    const [token] = useSearchParams();
     const { csrf } = useAuthContext();
 
     useEffect(() => {
