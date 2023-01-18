@@ -23,14 +23,18 @@ function Nav() {
                     <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
                         <Link to="/" active-class="active" class="nav-Link mr-5 hover:text-white">Home</Link>
 
-                        <Link to="register" class="nav-Link mr-5 hover:text-white">Register</Link>
-                        <Link to="login" class="nav-Link mr-5 hover:text-white">Login</Link>
+                        {user ? <>
+                            <Link to="dashboard" class="nav-Link mr-5 hover:text-white">Dashboard</Link>
 
-                        <Link to="dashboard" class="nav-Link mr-5 hover:text-white">Dashboard</Link>
+                            <button onClick={logout}>
+                                Logout
+                            </button>
+                        </> : <>
+                            <Link to="register" class="nav-Link mr-5 hover:text-white">Register</Link>
+                            <Link to="login" class="nav-Link mr-5 hover:text-white">Login</Link>
+                        </>
+                        }
 
-                        <button onClick={logout}>
-                            Logout
-                        </button>
                     </nav>
                 </div>
             </div >
