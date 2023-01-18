@@ -1,18 +1,10 @@
-import { useEffect } from "react";
-import useAuthContext from "../context/AuthContext";
+import React from "react"
 
 const Home = () => {
-    const { user, getUser } = useAuthContext();
-
-    useEffect(() => {
-        if (!user) {
-            getUser();
-        }
-    }, []);
 
     return (
         <div>
-            {user?.name}
+            Home
         </div>
     )
 }

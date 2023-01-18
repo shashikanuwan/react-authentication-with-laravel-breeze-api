@@ -6,6 +6,8 @@ import Dashboard from "../pages/Dashboard";
 import ForgotPassword from "../pages/ForgotPassword";
 import ResetPassword from "../pages/ResetPassword";
 import useAuthContext from "../context/AuthContext";
+import AuthLayout from "../layouts/AuthLayout";
+import GuestLayout from "../layouts/GuestLayout";
 
 function Nav() {
 
@@ -21,6 +23,7 @@ function Nav() {
                     </Link>
 
                     <nav class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+
                         <Link to="/" active-class="active" class="nav-Link mr-5 hover:text-white">Home</Link>
 
                         {user ? <>
@@ -30,8 +33,8 @@ function Nav() {
                                 Logout
                             </button>
                         </> : <>
-                            <Link to="register" class="nav-Link mr-5 hover:text-white">Register</Link>
                             <Link to="login" class="nav-Link mr-5 hover:text-white">Login</Link>
+                            <Link to="register" class="nav-Link mr-5 hover:text-white">Register</Link>
                         </>
                         }
 
@@ -42,11 +45,17 @@ function Nav() {
             <div className="max-w-7xl mx-auto mt-6">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/dashboard" element={<Dashboard />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
-                    <Route path="/reset-password" element={<ResetPassword />} />
+                    
+                    <Route element={<GuestLayout />} >
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                    </Route>
+
+                    <Route element={<AuthLayout />} >
+                        <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
+                        <Route path="/reset-password" element={<ResetPassword />} />
+                    </Route>
                 </Routes>
             </div>
         </div >
