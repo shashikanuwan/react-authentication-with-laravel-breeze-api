@@ -50,7 +50,7 @@ function Nav() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/forgot-password" element={<ForgotPassword />} />
-                        <Route path="/password-reset" element={<ResetPassword />} />
+                        <Route path="/password-reset/:token" element={<ResetPassword />} />
                     </Route>
 
                     <Route element={<AuthLayout />} >

@@ -31,7 +31,7 @@ const ForgotPassword = () => {
                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Forgot Password</h2>
 
                 {status && (
-                    <div class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md" v-if="authStore.status">
+                    <div class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
                         {status}
                     </div>
                 )}
@@ -57,7 +57,7 @@ const ForgotPassword = () => {
                     <div class="flex mt-6">
                         <button
                             class="px-8 py-2.5 leading-5 text-white transition-colors duration-300 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
-                            Forgot
+                            Submit
                         </button>
                     </div>
                 </form>
