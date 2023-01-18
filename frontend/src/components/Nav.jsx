@@ -45,16 +45,16 @@ function Nav() {
             <div className="max-w-7xl mx-auto mt-6">
                 <Routes>
                     <Route path="/" element={<Home />} />
-                    
+
                     <Route element={<GuestLayout />} >
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
+                        <Route path="/password-reset" element={<ResetPassword />} />
                     </Route>
 
                     <Route element={<AuthLayout />} >
                         <Route path="/dashboard" element={<Dashboard />} />
-                        <Route path="/forgot-password" element={<ForgotPassword />} />
-                        <Route path="/reset-password" element={<ResetPassword />} />
                     </Route>
                 </Routes>
             </div>
