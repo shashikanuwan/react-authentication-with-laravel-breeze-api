@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
+import axios from "../api/axios";
 import useAuthContext from "../context/AuthContext";
-import axios from "axios";
 
 const ResetPassword = () => {
     const [email, setEmail] = useState("");
@@ -10,11 +10,11 @@ const ResetPassword = () => {
     const [password, setPassword] = useState("");
     const [password_confirmation, setPasswordConfirmation] = useState("");
     const [searchParams] = useSearchParams();
-    const [token] = useSearchParams();
+    const { token } = useParams();
     const { csrf } = useAuthContext();
 
     useEffect(() => {
-        setEmail(searchParams.get('email'));
+        setEmail(searchParams.get("email"));
     }, []);
 
     const handleResetPassword = async (e) => {
@@ -44,10 +44,13 @@ const ResetPassword = () => {
                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Add Your New Password</h2>
 
                 {status && (
-                    <div class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
-                        {status}
-                        <div className="m-4">
-                            Go to <Link to="/login">Login</Link>
+                    <div>
+                        <div class="m-2 p-2 text-green-900 font-semibold bg-green-300 rounded-md">
+                            {status}
+                        </div>
+
+                        <div className="m-4 text-white">
+                            <span className="text-white"> Go to </span> <span className="text-red-500"><Link to="/login">Login</Link></span>
                         </div>
                     </div>
                 )}
