@@ -1,28 +1,32 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-const animation1 = {
-  initial: { opacity: 0, x: 100 },
-  animate: { opacity: 1, x: 0 },
-  exit: { opacity: 0, x: -100 },
-  transition: { duration: 0.5 },
+const pageAnimation1 = {
+  initial: { opacity: 0.6, y: 100 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -100 },
 };
 
-const animation2 = {
-  initial: { opacity: 0, scale: 0.5 },
+const pageAnimation2 = {
+  initial: { opacity: 0.6, scale: 1 },
   animate: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 0.5 },
-  transition: { duration: 0.5 },
+  exit: { opacity: 0.6, scale: 1 },
+};
+
+const pageAnimation3 = {
+  initial: { opacity: 0.8 },
+  animate: { opacity: 1 },
+  exit: { opacity: 0.8 },
 };
 
 const AnimatedPage = ({ children }) => {
   return (
     <motion.div
-      variants={animation2}
+      variants={pageAnimation3}
       initial="initial"
       animate="animate"
       exit="exit"
-      transition="transition"
+      transition={{ duration: 0.3 }}
     >
       {children}
     </motion.div>
