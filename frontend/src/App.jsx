@@ -1,11 +1,11 @@
-import Nav from "./components/Nav";
+import Navigation from "./components/Navigation";
 
 function App() {
 
   return (
 
     <div>
-      <Nav />
+      <Navigation />
     </div>
 
   )

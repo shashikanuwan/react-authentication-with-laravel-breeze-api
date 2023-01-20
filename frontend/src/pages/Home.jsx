@@ -1,12 +1,12 @@
-import React from "react"
+import React from "react";
+import AnimatedPage from "../components/AnimatedPage";
 
 const Home = () => {
+  return (
+    <AnimatedPage>
+      <div>Home</div>
+    </AnimatedPage>
+  );
+};
 
-    return (
-        <div>
-            Home
-        </div>
-    )
-}
-
-export default Home
+export default Home;

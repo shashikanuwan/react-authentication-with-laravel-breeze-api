@@ -21,7 +21,7 @@ export const AuthProvider = ({ children }) => {
         try {
             await axios.post('http://localhost:8000/login', data);
             await getUser();
-            navigate("/");
+            navigate("/dashboard");
         } catch (e) {
             if (e.response.status === 422) {
                 setErrors(e.response.data.errors);
@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
         try {
             await axios.post('http://localhost:8000/register', data);
             await getUser();
-            navigate("/");
+            navigate("/dashboard");
         } catch (e) {
             if (e.response.status === 422) {
                 setErrors(e.response.data.errors);
